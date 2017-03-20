@@ -84,6 +84,7 @@
 'Assets/Scripts/CameraShake.cs'
 'Assets/Scripts/Gun.cs'
 'Assets/Scripts/PlayerController.cs'
+'Assets/Scripts/Projectile.cs'
 'Assets/Scripts/Rotator.cs'
 -r:'/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/unity/System.Xml.Linq.dll'
