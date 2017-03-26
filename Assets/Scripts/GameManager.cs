@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -66,11 +65,17 @@ public class GameManager : MonoBehaviour {
 						GameObject spawnLocation = spawnPoints[spawnPoint];
 						GameObject newAlien = Instantiate(alien) as GameObject;
 						newAlien.transform.position = spawnLocation.transform.position;
+
+						// Add a target to Alien's NavMeshAgent. The target is the player
+						Alien alienScript = newAlien.GetComponent<Alien>();
+						alienScript.target = player.transform;
+
+						// Alien rotate towards the hero right
+						Vector3 targetRotation = new Vector3(player.transform.position.x, newAlien.transform.position.y, player.transform.position.z);
+						newAlien.transform.LookAt(targetRotation);
 					}
 				}
 			}
 		}
-
-
 	}
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
@@ -18,6 +16,8 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		// Move
 		Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
 		characterController.SimpleMove(moveDirection * moveSpeed);
 	}
@@ -27,7 +27,14 @@ public class PlayerController : MonoBehaviour {
 	/// It's called at consistent intervarls and not subject to frame rate. Any phisic operation
 	/// should be here (as we make on Rigid body)
 	void FixedUpdate(){
+
+		MouseMovementController();
+	}
+
+	private void MouseMovementController(){
+
 		Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
+
 		if (moveDirection == Vector3.zero){
 			//TODO
 		}else{
