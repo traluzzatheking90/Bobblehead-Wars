@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		for (int i = 0; i < spawnPoints.Length; i++){
+			Debug.Log("Spawn Points at startup: "+spawnPoints[i].transform.position);
+		}
 		
 	}
 	
@@ -30,7 +33,7 @@ public class GameManager : MonoBehaviour {
 		currentSpawnTime += Time.deltaTime;
 
 		if(currentSpawnTime > generatedSpawnTime){
-
+			
 			currentSpawnTime = 0;
 			generatedSpawnTime = Random.Range(minSpawnTime,maxSpawnTime);
 			
@@ -66,10 +69,12 @@ public class GameManager : MonoBehaviour {
 						GameObject newAlien = Instantiate(alien) as GameObject;
 						newAlien.transform.position = spawnLocation.transform.position;
 
+						Debug.Log("Spawn Points number: "+spawnPoint+" at location "+spawnLocation.transform.position);
+
 						// Add a target to Alien's NavMeshAgent. The target is the player
 						Alien alienScript = newAlien.GetComponent<Alien>();
 						alienScript.target = player.transform;
-
+						
 						// Alien rotate towards the hero right
 						Vector3 targetRotation = new Vector3(player.transform.position.x, newAlien.transform.position.y, player.transform.position.z);
 						newAlien.transform.LookAt(targetRotation);
